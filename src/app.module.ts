@@ -8,8 +8,15 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { UserModule } from './user/user.module';
 import { CharacterModule } from './character/character.module';
 import { ItemModule } from './item/item.module';
+import { InventoryModule } from './inventory/inventory.module';
 @Module({
-  imports: [UserModule, AuthModule, CharacterModule, ItemModule],
+  imports: [
+    UserModule,
+    AuthModule,
+    CharacterModule,
+    ItemModule,
+    InventoryModule,
+  ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
 })

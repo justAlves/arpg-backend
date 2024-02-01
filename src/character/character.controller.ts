@@ -50,11 +50,11 @@ export class CharacterController {
     @Param('id') id: string,
     @Body() updateCharacterDto: UpdateCharacterDto,
   ) {
-    return this.characterService.update(+id, updateCharacterDto);
+    return this.characterService.update(id, updateCharacterDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.characterService.remove(+id);
+    return this.characterService.remove(id);
   }
 }

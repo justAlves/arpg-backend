@@ -82,11 +82,32 @@ export class CharacterService {
     return character;
   }
 
-  update(id: number, updateCharacterDto: UpdateCharacterDto) {
-    return { id, ...updateCharacterDto };
+  async update(id: string, updateCharacterDto: UpdateCharacterDto) {
+    const character = await this.prisma.character.update({
+      where: {
+        id,
+      },
+      data: updateCharacterDto,
+    });
+
+    if (!character) {
+      throw new NotFoundException('Character not found');
+    }
+
+    return character;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} character`;
+  async remove(id: string) {
+    const character = this.prisma.character.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (!character) {
+      throw new NotFoundException('Character not found');
+    }
+
+    return character;
   }
 }

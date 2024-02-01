@@ -39,12 +39,24 @@ export class UserService {
     return user;
   }
 
-  findAll() {
-    return `This action returns all user`;
-  }
+  async findOne(id: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        admin: true,
+        characters: true,
+        displayName: true,
+      },
+    });
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+
+    return user;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

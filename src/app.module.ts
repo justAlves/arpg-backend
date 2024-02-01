@@ -6,8 +6,9 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 import { UserModule } from './user/user.module';
+import { CharacterModule } from './character/character.module';
 @Module({
-  imports: [UserModule, AuthModule],
+  imports: [UserModule, AuthModule, CharacterModule],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
 })

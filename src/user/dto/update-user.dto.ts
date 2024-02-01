@@ -1,1 +1,3 @@
-export interface UpdateUserDto {}
+export interface UpdateUserDto {
+  displayname: string;
+}

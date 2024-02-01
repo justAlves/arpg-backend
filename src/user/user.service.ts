@@ -59,10 +59,27 @@ export class UserService {
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    console.log('updateUserDto:', updateUserDto);
+  updateUsername(id: string, updateUserDto: UpdateUserDto) {
+    const { displayname } = updateUserDto;
 
-    return `This action updates a #${id} user`;
+    const user = this.prisma.user.update({
+      where: { id },
+      data: { displayName: displayname },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        admin: true,
+        characters: true,
+        displayName: true,
+      },
+    });
+
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+
+    return user;
   }
 
   remove(id: number) {

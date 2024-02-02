@@ -79,6 +79,11 @@ export class CharacterService {
       where: {
         id,
       },
+      include: {
+        ItemOnCharacter: { include: { item: true } },
+        Skill: true,
+        Songs: true,
+      },
     });
 
     if (!character) {

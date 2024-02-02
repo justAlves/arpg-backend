@@ -10,6 +10,7 @@ import { CharacterModule } from './character/character.module';
 import { ItemModule } from './item/item.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { SkillModule } from './skill/skill.module';
+import { SongModule } from './song/song.module';
 @Module({
   imports: [
     UserModule,
@@ -18,6 +19,7 @@ import { SkillModule } from './skill/skill.module';
     ItemModule,
     InventoryModule,
     SkillModule,
+    SongModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],

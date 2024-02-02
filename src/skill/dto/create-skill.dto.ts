@@ -1,1 +1,5 @@
-export interface CreateSkillDto {}
+export interface CreateSkillDto {
+  name: string;
+  description: string;
+  characterId: string;
+}

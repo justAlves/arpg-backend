@@ -54,7 +54,11 @@ export class CharacterService {
 
   async findAll() {
     const characters = await this.prisma.character.findMany({
-      include: { ItemOnCharacter: { include: { item: true } } },
+      include: {
+        ItemOnCharacter: { include: { item: true } },
+        Skill: true,
+        Songs: true,
+      },
     });
 
     return characters;
